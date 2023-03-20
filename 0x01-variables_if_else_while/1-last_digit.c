@@ -5,10 +5,8 @@
 	/*betty style doc for function main goes there */
 	/**
 	* main - main function
-	*
-	* Description: 'the program's description'
-	*
-	** Return; always 0
+ 	*
+	* Return: always 0
 	*/
 	int main(void)
 {
