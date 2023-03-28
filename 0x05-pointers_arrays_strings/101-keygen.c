@@ -1,23 +1,48 @@
 #include <stdio.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include <time.h>
-#define PASSWORD_LEN 10
 /**
- * main - Entry point
+ * checksum - executes checksum
+ * @s: input char
+ * Return: checksum
+ */
+unsigned long checksum(char *s)
+{
+unsigned long sum = 0;
+while (*s != 0)
+{
+	sum += *s;
+	s++;
+}
+return (sum);
+}
+/**
+ * main - prints password for crakme
  *
- * Return: Always 0 (Success)
+ * Return: Always 0.
  */
 int main(void)
 {
-char password[PASSWORD_LEN + 1];
-const char charset[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-srand(time(NULL));
-for (int i = 0; i < PASSWORD_LEN; i++)
-{
-int index = rand() % sizeof(charset);
-password[i] = charset[index];
-}
-password[PASSWORD_LEN] = '\0';
-printf("%s\n", password);
+	char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQSTUVWXYZ";
+	char s[33];
+	unsigned long sum;
+	int i, flag = 0;
+
+	srand(time(NULL));
+	while (flag == 0)
+	{
+		for (i = 0; i < 33; i++)
+		{
+			s[i] = alpha[rand() % (sizeof(alpha) - 1)];
+		}
+		s[i] = '\0';
+		sum = checksum(s);
+		if (sum == 2772)
+		{
+			flag = 1;
+			printf("%s", s);
+		}
+	}
 return (0);
 }
