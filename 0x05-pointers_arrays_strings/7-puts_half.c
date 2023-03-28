@@ -1,27 +1,48 @@
-#include "main.h"
-
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <time.h>
 /**
- * puts_half - prints half of a string.
- * @str: input string.
- * Return: no return.
+ * checksum - executes checksum
+ * @s: input char
+ * Return: checksum
  */
-void puts_half(char *str)
+unsigned long checksum(char *s)
 {
-int count = 0, i;
-
-while (count >= 0)
+unsigned long sum = 0;
+while (*s != 0)
 {
-if (str[count] == '\0')
-break;
-count++;
+sum += *s;
+s++;
 }
+return (sum);
+}
+/**
+ * main - prints password for crakme
+ *
+ * Return: Always 0.
+ */
+int main(void)
+{
+char alpha[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQSTUVWXYZ";
+char s[33];
+unsigned long sum;
+int i, flag = 0;
 
-if (count % 2 == 1)
-i = count / 2;
-else
-i = (count - 1) / 2;
-
-for (i++; i < count; i++)
-_putchar(str[i]);
-_putchar('\n');
+srand(time(NULL));
+while (flag == 0)
+{
+for (i = 0; i < 33; i++)
+{
+s[i] = alpha[rand() % (sizeof(alpha) - 1)];
+}
+s[i] = '\0';
+sum = checksum(s);
+if (sum == 2772)
+{
+flag = 1;
+printf("%s", s);
+}
+}
+return (0);
 }
