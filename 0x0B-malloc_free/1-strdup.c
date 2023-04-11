@@ -1,5 +1,12 @@
 #include <stdlib.h>
 
+/**
+ * _strdup - duplicates a string using malloc
+ * @str: the string to duplicate
+ *
+ * Return: pointer to duplicated string or NULL on failure
+ */
+
 char *_strdup(char *str)
 {
 char *dup_str;
