@@ -16,6 +16,6 @@ for (count = 0; h != NULL; count++, h = h->next)
 printf("[%d] %s\n", h->len, h->str == NULL ? "(nil)" : h->str);
 }
 
-return count;
+return (count);
 }
 

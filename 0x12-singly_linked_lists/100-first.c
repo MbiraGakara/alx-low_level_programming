@@ -1,14 +1,15 @@
 #include <stdio.h>
 
-void before_main(void)
+void print_intro() 
 {
-printf("You're beat! and yet, you must allow,\nI bore my house upon my back!\n");
+printf("You're beat! and yet, you must allow,\n");
+printf("I bore my house upon my back!\n");
 }
 
-int main(void) 
+int main() 
 {
-before_main();
-printf("This is the main function.\n");
+print_intro();
+
 return (0);
 }
 
