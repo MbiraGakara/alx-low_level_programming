@@ -1,11 +1,12 @@
 /**
- * get_endianness - return the endianness of the machine
+ * get_endianness - Checks the endianness
  *
- * Return: 0 for big endian, 1 for little endian
+ * Return: 0 if big endian, 1 if little endian
  */
 int get_endianness(void)
 {
-	int n = 1;
-
-	return (*((char *) &n) + '0');
+int i = 1;
+char *c = (char *)&i;
+return (*c ? 1 : 0);
 }
+
